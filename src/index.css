@@ -22,8 +22,12 @@ main {
   justify-content: center;
 }
 
-.rating span {
+.rating i {
   color: #ffc000;
+}
+
+.rating {
+  color: #007185;
 }
 
 .product {
@@ -36,4 +40,8 @@ main {
 }
 .product-info {
   padding: 1rem;
+}
+
+.img-large {
+  max-width: 100%;
 }

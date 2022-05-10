@@ -3,5 +3,13 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+import { HelmetProvider } from 'react-helmet-async';
+import { StoreProvider } from './Store';
+ReactDOM.render(
+  <StoreProvider>
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  </StoreProvider>,
+  document.getElementById('root')
+);
