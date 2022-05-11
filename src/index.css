@@ -15,7 +15,9 @@ main {
 .btn-primary {
   background-color: #f0c040;
   color: #000000;
+  border: solid 1px black;
 }
+
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -48,4 +50,9 @@ main {
 
 .img-thumbnail {
   height: 80px;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }
