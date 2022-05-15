@@ -16,6 +16,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import { Helmet } from 'react-helmet-async';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -30,6 +31,14 @@ function App() {
   };
   return (
     <BrowserRouter>
+      <Helmet>
+        <link
+          rel="icon"
+          type="image/png"
+          href={require('./assets/favicon.ico')}
+          sizes="16x16"
+        />
+      </Helmet>
       <div className="d-flex flex-column site-container">
         <ToastContainer position="bottom-center" limit={1} />
         <header>
