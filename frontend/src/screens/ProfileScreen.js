@@ -4,12 +4,13 @@ import { Form, Button } from 'react-bootstrap';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
+import LoadingBox from '../components/LoadingBox';
 import axios from 'axios';
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_REQUEST':
-      return { ...state, loadingUpdate: true };
+      return { ...state, loadin: true };
     case 'UPDATE_SUCCESS':
       return { ...state, loadingUpdate: false };
     case 'UPDATE_FAIL':
@@ -34,6 +35,14 @@ export default function ProfileScreen() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (password === '') {
+      toast.error('Password cannot be empty.');
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match.');
+      return;
+    }
     try {
       const { data } = await axios.put(
         '/api/users/profile',
@@ -66,42 +75,46 @@ export default function ProfileScreen() {
         <title>User Profile</title>
       </Helmet>
       <h1 className="my-3">User Profile</h1>
-      <form onSubmit={submitHandler}>
-        <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </Form.Group>
-        <div className="mb-3">
-          <Button type="submit">Update</Button>
-        </div>
-      </form>
+      {loadingUpdate ? (
+        <LoadingBox />
+      ) : (
+        <form onSubmit={submitHandler}>
+          <Form.Group className="mb-3" controlId="name">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="confirmPassword">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </Form.Group>
+          <div className="mb-3">
+            <Button type="submit">Update</Button>
+          </div>
+        </form>
+      )}
     </div>
   );
 }
