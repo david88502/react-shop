@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Button, Form, InputGroup, FormControl } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export default function SearchBox() {
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
@@ -18,12 +19,12 @@ export default function SearchBox() {
           name="q"
           id="q"
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="search products..."
+          placeholder="Search Products..."
           aria-label="Search Products"
           aria-describedby="button-search"
         ></FormControl>
         <Button variant="outline-primary" type="submit" id="button-search">
-          <i className="fas fa-search"></i>
+          <FontAwesomeIcon icon={faSearch} />
         </Button>
       </InputGroup>
     </Form>

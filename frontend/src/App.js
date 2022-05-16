@@ -11,8 +11,6 @@ import {
   NavDropdown,
   Button,
 } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
-import axios from 'axios';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
@@ -24,6 +22,9 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import SearchScreen from './screens/SearchScreen';
+import { LinkContainer } from 'react-router-bootstrap';
+import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 import { getError } from './utils';
 import SearchBox from './components/SearchBox';
@@ -139,6 +140,7 @@ function App() {
               <Nav.Item key={category}>
                 <LinkContainer
                   to={`/search?category=${category}`}
+                  className="category-link"
                   onClick={() => setSidebarIsOpen(false)}
                 >
                   <Nav.Link>{category}</Nav.Link>
@@ -152,6 +154,7 @@ function App() {
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
+              <Route path="/search" element={<SearchScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/signup" element={<SignupScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
@@ -167,8 +170,8 @@ function App() {
             </Routes>
           </Container>
         </main>
-        <footer>
-          <div className="text-center">All rights reserved</div>
+        <footer className="footer">
+          <div className="text-center">Built by David Wang</div>
         </footer>
       </div>
     </BrowserRouter>

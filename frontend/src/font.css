@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Ember';
+  src: url('./fonts/AmazonEmber_Rg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ember';
+  src: url('./fonts/AmazonEmber_RgIt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Ember';
+  src: url('./fonts/AmazonEmber_Bd.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ember';
+  src: url('./fonts/AmazonEmber_BdIt.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Ember';
+  src: url('./fonts/AmazonEmber_Lt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ember';
+  src: url('./fonts/AmazonEmber_LtIt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
