@@ -1,6 +1,6 @@
 # React Shop
 
-Live Demo: https://david-wang-react-shop.herokuapp.com/
+Live Demo: https://david-wang-react-shop.up.railway.app/
 
 Sandbox PayPal Account: sb-fckxw16341125@personal.example.com
 
