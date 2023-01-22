@@ -1,8 +1,8 @@
-import { useContext, useState, useEffect } from 'react';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Store } from './Store';
+import { useContext, useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Store } from "./Store";
 import {
   Container,
   Navbar,
@@ -10,35 +10,35 @@ import {
   Badge,
   NavDropdown,
   Button,
-} from 'react-bootstrap';
-import CartScreen from './screens/CartScreen';
-import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
-import SigninScreen from './screens/SigninScreen';
-import ShippingAddressScreen from './screens/ShippingAddressScreen';
-import SignupScreen from './screens/SignupScreen';
-import PaymentMethodScreen from './screens/PaymentMethodScreen';
-import PlaceOrderScreen from './screens/PlaceOrderScreen';
-import OrderScreen from './screens/OrderScreen';
-import OrderHistoryScreen from './screens/OrderHistoryScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import SearchScreen from './screens/SearchScreen';
-import { LinkContainer } from 'react-router-bootstrap';
-import axios from 'axios';
-import { Helmet } from 'react-helmet-async';
-import { getError } from './utils';
-import SearchBox from './components/SearchBox';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+} from "react-bootstrap";
+import CartScreen from "./screens/CartScreen";
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
+import SigninScreen from "./screens/SigninScreen";
+import ShippingAddressScreen from "./screens/ShippingAddressScreen";
+import SignupScreen from "./screens/SignupScreen";
+import PaymentMethodScreen from "./screens/PaymentMethodScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
+import OrderHistoryScreen from "./screens/OrderHistoryScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import SearchScreen from "./screens/SearchScreen";
+import { LinkContainer } from "react-router-bootstrap";
+import axios from "axios";
+import { Helmet } from "react-helmet-async";
+import { getError } from "./utils";
+import SearchBox from "./components/SearchBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
   const signoutHandler = () => {
-    ctxDispatch({ type: 'USER_SIGN_OUT' });
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('shippingAddress');
-    localStorage.removeItem('paymentMethod');
-    window.location.href = '/signin';
+    ctxDispatch({ type: "USER_SIGN_OUT" });
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("shippingAddress");
+    localStorage.removeItem("paymentMethod");
+    window.location.href = "/signin";
     toast.success("You've successfully signed out.");
   };
 
@@ -62,15 +62,15 @@ function App() {
         <link
           rel="icon"
           type="image/png"
-          href={require('./assets/favicon.ico')}
+          href={require("./assets/favicon.ico")}
           sizes="16x16"
         />
       </Helmet>
       <div
         className={
           sidebarIsOpen
-            ? 'd-flex flex-column site-container active-cont'
-            : 'd-flex flex-column site-container'
+            ? "d-flex flex-column site-container active-cont"
+            : "d-flex flex-column site-container"
         }
       >
         <ToastContainer position="bottom-center" limit={1} />
@@ -128,8 +128,8 @@ function App() {
         <div
           className={
             sidebarIsOpen
-              ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column'
-              : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
+              ? "active-nav side-navbar d-flex justify-content-between flex-wrap flex-column"
+              : "side-navbar d-flex justify-content-between flex-wrap flex-column"
           }
         >
           <Nav className="flex-column text-white w-100 p-2">
@@ -138,8 +138,16 @@ function App() {
             </Nav.Item>
             {categories.map((category) => (
               <Nav.Item key={category}>
-                <LinkContainer
+                {/* <LinkContainer
                   to={`/search?category=${category}`}
+                  className="category-link"
+                  onClick={() => setSidebarIsOpen(false)}
+                > */}
+                <LinkContainer
+                  to={{
+                    pathname: "/search",
+                    search: `?category=${category}`,
+                  }}
                   className="category-link"
                   onClick={() => setSidebarIsOpen(false)}
                 >
